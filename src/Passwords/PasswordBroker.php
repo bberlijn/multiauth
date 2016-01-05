@@ -77,7 +77,7 @@ class PasswordBroker extends OriginalPasswordBroker
         $view = $this->emailView;
         $type = $this->type;
 
-        return $this->mailer->send($view, compact('token', 'user', 'type'),
+        return $this->mailer->queue($view, compact('token', 'user', 'type'),
             function ($m) use ($user, $token, $type, $callback) {
                 $m->to($user->getEmailForPasswordReset());
 
